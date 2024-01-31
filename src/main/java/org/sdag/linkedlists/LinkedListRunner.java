@@ -6,7 +6,8 @@ public class LinkedListRunner implements IRunner {
     @Override
     public void run() {
         printMenuLinkedList();
-        LinkedList list = new LinkedList();
+        LinkedListFactory.getLinkedList("1");
+        LinkedListFactory.getLinkedList("8");
     }
 
     public static void printMenuLinkedList() {
@@ -20,5 +21,6 @@ public class LinkedListRunner implements IRunner {
         System.out.println("5 - Add a new Node at the Begging");
         System.out.println("6 - Add a new Node at the End");
         System.out.println("7 - Remove the first Node");
+        System.out.println("8 - Show the Linked List");
     }
 }

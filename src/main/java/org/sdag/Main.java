@@ -5,7 +5,7 @@ import org.sdag.interfaces.IRunner;
 public class Main {
     public static void main(String[] args) {
         printMenu();
-        IRunner runner = RunnerFactory.getRunner("A");
+        IRunner runner = RunnerFactory.getRunner("B");
         runner.run();
     }
 

@@ -1,7 +1,7 @@
 package org.sdag.linkedlists;
 
-public class LinkedList implements ILinkedList {
-    Node head;
+public class LinkedList<T> implements ILinkedList<T> {
+    Node<T> head;
     //Show the size of the linked list
     @Override
     public int size() {
@@ -10,7 +10,7 @@ public class LinkedList implements ILinkedList {
         }
 
         int size = 0;
-        Node current = head;
+        Node<T> current = head;
         while(current != null) {
             size++;
             current = current.next;
@@ -24,13 +24,13 @@ public class LinkedList implements ILinkedList {
     }
 
     @Override
-    public Node first() {
+    public Node<T> first() {
         return head;
     }
 
     @Override
-    public Node last() {
-        Node current = head;
+    public Node<T> last() {
+        Node<T> current = head;
         while(current != null) {
             if (current.next == null) {
                 return current;
@@ -39,9 +39,10 @@ public class LinkedList implements ILinkedList {
         }
         return null;
     }
+
     @Override
-    public void addFirst(int data) {
-        Node newNode = new Node(data);
+    public void addFirst(T data) {
+        Node<T> newNode = new Node<T>(data);
         if (isEmpty()) {
             head = newNode;
             return;
@@ -50,27 +51,29 @@ public class LinkedList implements ILinkedList {
         head = newNode;
     }
     @Override
-    public void addLast(int data) {
-        Node lastNode = last();
+    public void addLast(T data) {
+        Node<T> lastNode = last();
 
         if(lastNode == null) {
-            head = new Node(data);
+            head = new Node<T>(data);
             return;
         }
 
-        lastNode.next = new Node(data);
+        lastNode.next = new Node<T>(data);
     }
     @Override
     public void removeFirst() {
-
+        if(isEmpty()) {
+            return;
+        }
+        head = head.next;
     }
 
     public void print() {
-        Node current = head;
+        Node<T> current = head;
         while (current != null) {
-            System.out.println(current.data);
+            System.out.print(current.data+" -> ");
             current = current.next;
         }
     }
 }
-

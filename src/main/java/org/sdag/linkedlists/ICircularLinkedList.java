@@ -1,6 +1,6 @@
 package org.sdag.linkedlists;
 
-public interface ILinkedList<T> {
+public interface ICircularLinkedList<T> {
     int size();
     boolean isEmpty();
     Node<T> first();
@@ -8,5 +8,5 @@ public interface ILinkedList<T> {
     void addFirst(T data);
     void addLast(T data);
     void removeFirst();
+    void rotate();
 }
-
