@@ -37,40 +37,88 @@ public class DoubleLinkedList<T> implements IDoubleLinkedList<T>{
     }
 
     @Override
-    public DoubleEdgeNode<T> first() {
-        return null;
+    public T first() {
+        return head.data;
     }
 
     @Override
-    public DoubleEdgeNode<T> last() {
-        return null;
+    public T last() {
+        return tail.data;
     }
 
     @Override
     public void addFirst(T data) {
-
+        DoubleEdgeNode<T> current = new DoubleEdgeNode<T>(data);
+        if(isEmpty()) {
+            tail = current;
+            tail.next = null;
+            tail.prev = null;
+        } else {
+            head.prev = current;
+            current.prev = null;
+            current.next = head;
+        }
+        head = current;
     }
 
     @Override
     public void addLast(T data) {
-
+        DoubleEdgeNode<T> current = new DoubleEdgeNode<T>(data);
+        if(isEmpty()) {
+            head = current;
+            head.next = null;
+            head.prev = null;
+        } else {
+            tail.next = current;
+            current.next = null;
+            current.prev = tail;
+        }
+        tail = current;
     }
 
     @Override
-    public void removeFirst() {
+    public T removeFirst() {
         if(head == null){
-            return;
+            System.out.println("The list is empty. Nothing to remove.");
         }
+        T aux = head.data;
         head = head.next;
         head.prev = null;
+        return aux;
     }
 
     @Override
-    public void removeLast() {
+    public T removeLast() {
         if(tail == null){
-            return;
+            System.out.println("The list is empty. Nothing to remove.");
         }
+        T aux = tail.data;
         tail = tail.prev;
         tail.next = null;
+        return aux;
+    }
+
+    @Override
+    public void printHead() {
+        if(!isEmpty()) {
+            String data = "<=>";
+            DoubleEdgeNode<T> current = head;
+            while (current != null) {
+                data = data + "["+current.data+"]<=>";
+                current = current.next;
+            }
+        }
+    }
+
+    @Override
+    public void printTail() {
+        if(!isEmpty()) {
+            String data = "<=>";
+            DoubleEdgeNode<T> current = tail;
+            while (current != null) {
+                data = data + "["+current.data+"]<=>";
+                current = current.prev;
+            }
+        }
     }
 }

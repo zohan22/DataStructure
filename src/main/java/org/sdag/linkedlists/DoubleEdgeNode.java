@@ -1,9 +1,9 @@
 package org.sdag.linkedlists;
 
 public class DoubleEdgeNode<T> {
-    DoubleEdgeNode<T> prev;
-    DoubleEdgeNode<T> next;
-    T data;
+    public DoubleEdgeNode<T> prev;
+    public DoubleEdgeNode<T> next;
+    public T data;
 
     public DoubleEdgeNode(T data) {
         this.prev = null;

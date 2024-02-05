@@ -58,7 +58,8 @@ public class StackRunner implements IRunner {
         System.out.println("Welcome to the Stacks");
         System.out.println("What do you want to do?");
         System.out.println("Choose an option: ");
-        System.out.println("I - ArrayStack");
-        System.out.println("II - LinkedListStack");
+        System.out.println("1 - Array based Stack");
+        System.out.println("2 - Linked List based Stack");
+        System.out.println("3 - Go Back to Main Menu");
     }
 }
