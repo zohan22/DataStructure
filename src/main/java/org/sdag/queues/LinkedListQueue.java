@@ -60,9 +60,9 @@ public class LinkedListQueue<T> implements IQueue<T>{
     public void print() {
         Node<T> current = front;
         while(current != null) {
-            System.out.println(current.data);
+            System.out.print(current.data);
             if(current.next != null) {
-                System.out.println(" - ");
+                System.out.print(" -> ");
             }
             current = current.next;
         }

@@ -6,9 +6,6 @@ public class LinkedListRunner implements IRunner {
     @Override
     public void run() {
         printMenuLinkedList();
-        //LinkedList<String> list = new LinkedList<String>();
-        /*CircularLinkedList<Character> circularList = new CircularLinkedList<Character>();
-        circularList.addFirst('A');*/
 
 
     }

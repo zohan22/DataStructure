@@ -3,56 +3,53 @@ package org.sdag.stacks;
 import org.sdag.Person;
 import org.sdag.interfaces.IRunner;
 
+import java.util.Scanner;
+
 public class StackRunner implements IRunner {
+    Scanner scanner = new Scanner(System.in);
+    boolean bool = true;
 
     @Override
     public void run() {
-        /*ArrayStack<Person> personArrayStack = new ArrayStack<Person>();
-        //printMenuStack();
-        personArrayStack.print();
-        personArrayStack.push(new Person("John", 25));
-        personArrayStack.push(new Person("Jane", 24));
-        personArrayStack.push(new Person("Jack", 23));
-        personArrayStack.push(new Person("Jill", 22));
-        personArrayStack.print();
-        System.out.println("1---------");
-        var persona = personArrayStack.pop();
-        personArrayStack.print();
-        System.out.println("2---------");
-        persona = personArrayStack.top();
-        System.out.println("The top of the stacK: " + personArrayStack.top());
-        personArrayStack.print();
-        System.out.println("3---------");
-        persona = personArrayStack.pop();
-        personArrayStack.print();*/
-
-        LinkedListStack<Character> characterLinkedListStack = new LinkedListStack<Character>();
-        printMenuStack();
-        //characterLinkedListStack.size();
-        System.out.println("1----------");
-        System.out.println("The size of the stacK: " + characterLinkedListStack.size());
-        characterLinkedListStack.push('A');
-        characterLinkedListStack.push('B');
-        characterLinkedListStack.push('C');
-        characterLinkedListStack.push('D');
-        characterLinkedListStack.print();
-        System.out.println("The size of the stacK: " + characterLinkedListStack.size());
-        System.out.println("\n");
-        System.out.println("2----------");
-        characterLinkedListStack.pop();
-        characterLinkedListStack.print();
-        System.out.println("\n");
-        System.out.println("3----------");
-        characterLinkedListStack.top();
-        System.out.println("The top of the stacK: " + characterLinkedListStack.top());
-        characterLinkedListStack.print();
-        System.out.println("\n");
-        System.out.println("4----------");
-        characterLinkedListStack.pop();
-        characterLinkedListStack.print();
-
-
+        while(bool) {
+            printMenuStack();
+            handleUserChoice();
+        }
     }
+
+    private void handleArrayStack() {
+        ArrayStackHandler stack = new ArrayStackHandler();
+        stack.run();
+    }
+
+    private void handleLinkedListStack() {
+        LinkedListStackHandler linkedListStack = new LinkedListStackHandler();
+        linkedListStack.run();
+    }
+
+    public void handleUserChoice() {
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                handleArrayStack();
+                break;
+            case 2:
+                handleLinkedListStack();
+                break;
+            case 3:
+                System.out.println("Returning to the main menu.");
+                System.out.println("Are you sure want to the return main menu?");
+                System.out.println("y/n: ");
+                char decide = scanner.next().toLowerCase().charAt(0);
+                if(decide == 'y') {
+                    bool = false;
+                }
+                return;
+            default:
+                System.out.println("Invalid option. Please choose a valid option.");
+        }
+    }
+
 
     public static void printMenuStack() {
         System.out.println("Welcome to the Stacks");

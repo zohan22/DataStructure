@@ -41,4 +41,5 @@ public interface IStack<E> {
      * Prints the elements of the stack in the order they would be popped.
      */
     void print();
+
 }

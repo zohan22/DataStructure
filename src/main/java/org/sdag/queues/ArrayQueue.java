@@ -73,7 +73,7 @@ public class ArrayQueue<T> implements IQueue<T> {
         }
 
         for (int i = front; i <= back; i++) {
-            System.out.print(listArray[i] + " ");
+            System.out.print(listArray[i] + " <- ");
         }
         System.out.println();
     }
