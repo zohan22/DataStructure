@@ -7,10 +7,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        printMenu();
-        String data = JOptionPane.showInputDialog("Enter a menu option: ");
-        IRunner runner = RunnerFactory.getRunner(data.toUpperCase());
-        runner.run();
+
+        while(true) {
+            printMenu();
+            String data = JOptionPane.showInputDialog("Enter a menu option: ");
+            IRunner runner = RunnerFactory.getRunner(data.toUpperCase());
+            runner.run();
+        }
     }
 
     private static void printMenu() {

@@ -24,6 +24,9 @@ public class CircularLinkedList<T> implements ICircularLinkedList<T> {
 
     @Override
     public CircularNode<T> first() {
+        if(isEmpty()) {
+            return null;
+        }
         return tail.next;
     }
 
@@ -35,11 +38,11 @@ public class CircularLinkedList<T> implements ICircularLinkedList<T> {
     @Override
     public void addFirst(T data) {
         CircularNode<T> current = new CircularNode<T>(data);
-        if(!isEmpty()){
-            current.next = tail.next;
+        if(isEmpty()){
+            tail=current;
             tail.next = current;
         }
-        tail=current;
+        current.next = tail.next;
         tail.next = current;
     }
 

@@ -5,13 +5,10 @@ public class DoubleLinkedList<T> implements IDoubleLinkedList<T>{
     private DoubleEdgeNode<T> tail;
 
     public DoubleLinkedList() {
-        DoubleEdgeNode<T> head = new DoubleEdgeNode<>(null);
-        DoubleEdgeNode<T> tail = new DoubleEdgeNode<>(null);
+        head = new DoubleEdgeNode<>(null);
+        tail = new DoubleEdgeNode<>(null);
         head.next = tail;
         tail.prev = head;
-
-        this.head = null;
-        this.tail = null;
     }
 
     @Override
@@ -38,63 +35,77 @@ public class DoubleLinkedList<T> implements IDoubleLinkedList<T>{
 
     @Override
     public T first() {
-        return head.data;
+        if (isEmpty()) {
+            return null;
+        }
+        return head.next.data;
     }
 
     @Override
     public T last() {
-        return tail.data;
+        if (isEmpty()) {
+            return null;
+        }
+        return tail.prev.data;
     }
 
     @Override
     public void addFirst(T data) {
-        DoubleEdgeNode<T> current = new DoubleEdgeNode<T>(data);
-        if(isEmpty()) {
-            tail = current;
-            tail.next = null;
-            tail.prev = null;
+        DoubleEdgeNode<T> current = new DoubleEdgeNode<>(data);
+        if (isEmpty()) {
+            head.next = current;
+            tail.prev = current;
+            current.prev = head;
+            current.next = tail;
         } else {
-            head.prev = current;
-            current.prev = null;
-            current.next = head;
+            current.next = head.next;
+            current.prev = head;
+            head.next.prev = current;
+            head.next = current;
         }
-        head = current;
+
     }
 
     @Override
     public void addLast(T data) {
         DoubleEdgeNode<T> current = new DoubleEdgeNode<T>(data);
-        if(isEmpty()) {
-            head = current;
-            head.next = null;
-            head.prev = null;
+        if (isEmpty()) {
+            head.next = current;
+            tail.prev = current;
+            current.prev = head;
+            current.next = tail;
         } else {
-            tail.next = current;
-            current.next = null;
-            current.prev = tail;
+            current.prev = tail.prev;
+            current.next = tail;
+            tail.prev.next = current;
+            tail.prev = current;
         }
-        tail = current;
+
     }
 
     @Override
     public T removeFirst() {
-        if(head == null){
+        if(isEmpty()){
             System.out.println("The list is empty. Nothing to remove.");
+            return null;
         }
-        T aux = head.data;
-        head = head.next;
-        head.prev = null;
+
+        T aux = head.next.data;
+        head.next = head.next.next;
+        head.next.prev = head;
         return aux;
     }
 
     @Override
     public T removeLast() {
-        if(tail == null){
+        if (isEmpty()) {
             System.out.println("The list is empty. Nothing to remove.");
+            return null;
         }
-        T aux = tail.data;
-        tail = tail.prev;
-        tail.next = null;
+
+        T aux = tail.prev.data;
+        tail.prev = tail.prev.prev;
+        tail.prev.next = tail;
         return aux;
     }
 
@@ -102,11 +113,12 @@ public class DoubleLinkedList<T> implements IDoubleLinkedList<T>{
     public void printHead() {
         if(!isEmpty()) {
             String data = "<=>";
-            DoubleEdgeNode<T> current = head;
+            DoubleEdgeNode<T> current = head.next;
             while (current != null) {
-                data = data + "["+current.data+"]<=>";
+                data = data + "[" + current.data + "]<=>";
                 current = current.next;
             }
+            System.out.println(data);
         }
     }
 
@@ -114,11 +126,12 @@ public class DoubleLinkedList<T> implements IDoubleLinkedList<T>{
     public void printTail() {
         if(!isEmpty()) {
             String data = "<=>";
-            DoubleEdgeNode<T> current = tail;
+            DoubleEdgeNode<T> current = tail.prev;
             while (current != null) {
-                data = data + "["+current.data+"]<=>";
+                data = data + "[" + current.data + "]<=>";
                 current = current.prev;
             }
+            System.out.println(data);
         }
     }
 }

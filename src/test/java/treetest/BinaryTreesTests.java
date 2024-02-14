@@ -165,6 +165,34 @@ public class BinaryTreesTests {
         int[] result = postTree.postOrder();
 
         Assertions.assertArrayEquals(expected, result);
+    }
 
+    @Test
+    public void testDeleteTree() {
+        BinaryTree tr = new BinaryTree();
+        tr.insert(5);
+        tr.insert(3);
+        tr.insert(7);
+        tr.insert(2);
+        tr.insert(4);
+        tr.insert(6);
+        tr.insert(8);
+
+        Assertions.assertTrue(tr.search(3));
+        Assertions.assertTrue(tr.search(7));
+        Assertions.assertTrue(tr.search(4));
+        Assertions.assertTrue(tr.search(6));
+
+        tr.delete(3);
+        tr.delete(7);
+
+        Assertions.assertFalse(tr.search(3));
+        Assertions.assertFalse(tr.search(7));
+
+        Assertions.assertTrue(tr.search(5));
+        Assertions.assertTrue(tr.search(2));
+        Assertions.assertTrue(tr.search(4));
+        Assertions.assertTrue(tr.search(6));
+        Assertions.assertTrue(tr.search(8));
     }
 }

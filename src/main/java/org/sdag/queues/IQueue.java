@@ -14,6 +14,7 @@ public interface IQueue<T> {
     boolean isEmpty();
 
     /**
+     * Only Array queue
      * Tests whether the queue is full.
      * @return true if the queue is full, false otherwise.
      */

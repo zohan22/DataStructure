@@ -3,6 +3,7 @@ package org.sdag;
 import org.sdag.interfaces.IRunner;
 import org.sdag.linkedlists.LinkedListRunner;
 import org.sdag.queues.QueueRunner;
+import org.sdag.sorting.buble_sort.BubbleSortRunner;
 import org.sdag.stacks.StackRunner;
 import org.sdag.trees.TreeRunner;
 
@@ -19,6 +20,9 @@ public class RunnerFactory {
         }
         if(structureID.equals("D")) {
             return new TreeRunner();
+        }
+        if(structureID.equals("H")) {
+            return new BubbleSortRunner();
         }
         /*if (structureID.equals("")) {
             return new GraphRunner();
