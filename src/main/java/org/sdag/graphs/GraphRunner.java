@@ -6,6 +6,6 @@ public class GraphRunner implements IRunner {
 
     @Override
     public void run() {
-
+        System.out.println("I'm the GraphRunner");
     }
 }

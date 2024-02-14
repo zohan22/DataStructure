@@ -24,9 +24,9 @@ public class Main {
         System.out.println("C - Queues");
         System.out.println("D - Trees");
         System.out.println("E - Graphs");
-        System.out.println("F - 1 Sorting");
-        System.out.println("G - 2 Sorting");
-        System.out.println("H - 3 Sorting");
+        System.out.println("F - 1 MergeSort");
+        System.out.println("G - 2 QuickSort");
+        System.out.println("H - 3 BubbleSort");
         System.out.println("I - Exit");
     }
 }
