@@ -27,4 +27,5 @@ public class GEdge {
     public String toString() {
         return "(" + source + " -> " + destination + ", Weight: " + weight + ")";
     }
+
 }

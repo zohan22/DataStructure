@@ -106,7 +106,13 @@ public class Graph implements IMyGraph{
 
     @Override
     public void removeEdge(GEdge edge) {
-        edges.remove(edge);
+        //edges.remove(edge);
+        if (edge != null) {
+            GNode source = edge.getSource();
+            GNode destination = edge.getDestination();
+
+            edges.removeIf(e -> e.getSource().equals(source) && e.getDestination().equals(destination));
+        }
     }
 
     @Override

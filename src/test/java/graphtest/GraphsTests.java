@@ -74,7 +74,7 @@ public class GraphsTests {
         Assertions.assertEquals(5, edges[0].getWeight());
     }
 
-    /*@Test
+    @Test
     public void testGetEdge() {
         IMyGraph graph = new Graph();
 
@@ -86,9 +86,9 @@ public class GraphsTests {
         graph.addEdge(node1, node2, 5);
 
         GEdge edge = graph.getEdge(node1, node2);
-        Assertions.assertNull(edge);
+        Assertions.assertNotNull(edge);
         Assertions.assertEquals(5, edge.getWeight());
-    }*/
+    }
 
     @Test
     public void testOutDegree() {
@@ -159,20 +159,27 @@ public class GraphsTests {
         Assertions.assertArrayEquals(new GNode[]{node}, graph.getVertices());
     }
 
-    /*@Test
+    @Test
     public void testAddEdge() {
-        IMyGraph graph = new Graph();
-
         GNode node1 = new GNode("A");
         GNode node2 = new GNode("B");
 
+        Graph graph = new Graph();
+
         graph.addNode(node1);
         graph.addNode(node2);
-        graph.addEdge(node1, node2, 5);
 
-        Assertions.assertEquals(1, graph.getNumberOfEdges());
-        Assertions.assertArrayEquals(new GEdge[]{new GEdge(node1, node2, 5)}, graph.getEdges());
-    }*/
+        graph.addEdge(node1, node2, 10);
+
+        GEdge[] edges = graph.getEdges();
+
+
+        Assertions.assertEquals(1, edges.length);
+
+        Assertions.assertEquals(node1, edges[0].getSource());
+        Assertions.assertEquals(node2, edges[0].getDestination());
+        Assertions.assertEquals(10, edges[0].getWeight());
+    }
 
     @Test
     public void testRemoveNode() {
@@ -190,7 +197,7 @@ public class GraphsTests {
         Assertions.assertArrayEquals(new GNode[]{node2}, graph.getVertices());
     }
 
-    /*@Test
+    @Test
     public void testRemoveEdge() {
         IMyGraph graph = new Graph();
 
@@ -205,5 +212,5 @@ public class GraphsTests {
 
         Assertions.assertEquals(0, graph.getNumberOfEdges());
         Assertions.assertArrayEquals(new GEdge[]{}, graph.getEdges());
-    }*/
+    }
 }
