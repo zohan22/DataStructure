@@ -11,8 +11,16 @@ public class QueuesTests {
     IQueue<Integer> queue = new LinkedListQueue<>();
 
     @Test
-    public void testSizeQueueIsZero() {
+    public void testSizeQueue() {
         Assertions.assertEquals(0, queue.size());
+
+        for (int i = 1; i <= 10; i++) {
+            queue.enqueue(i);
+        }
+
+        int size = queue.size();
+        int expected = 10;
+        Assertions.assertEquals(expected, size);
     }
 
     @Test

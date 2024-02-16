@@ -29,6 +29,7 @@ public class BinaryTreesTests {
         Assertions.assertTrue(tree.search(8));
 
         Assertions.assertFalse(tree.search(1));
+        Assertions.assertEquals(7, tree.size());
 
     }
 
@@ -50,10 +51,11 @@ public class BinaryTreesTests {
         tree.insert(3);
         tree.insert(7);
         tree.insert(2);
+        tree.insert(1);
         tree.insert(4);
         tree.insert(6);
         tree.insert(8);
-        Assertions.assertEquals(3, tree.height());
+        Assertions.assertEquals(4, tree.height());
     }
 
     @Test
@@ -79,6 +81,8 @@ public class BinaryTreesTests {
 
     @Test
     public void testGetRoot() {
+        BTNode m = tree.getRoot();
+        Assertions.assertNull(m);
         BinaryTree tree5 = new BinaryTree(10);
 
         BTNode r = tree5.getRoot();
